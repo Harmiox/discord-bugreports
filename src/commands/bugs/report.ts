@@ -15,10 +15,10 @@ export default class extends Command<BugReportsClient> {
 
 	public constructor() {
 		super({
-		desc: 'Report a bug for the game.',
-		group: 'bugs',
-		name: 'report',
-		usage: '<prefix>report'
+			desc: 'Report a bug for the game.',
+			group: 'bugs',
+			name: 'report',
+			usage: '<prefix>report'
 		});
 	}
 
