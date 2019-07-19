@@ -1,0 +1,10 @@
+Bugs:
+	☐ Footer Text for bug reports not showing.
+
+Todo:
+	☐ Let users exit out of the bug report prompt. (maybe add timeout too)
+	☐ Grammar
+
+Commands:
+	☐ Edit (edit a bug report)
+	☐ Remove (remove a bug report)

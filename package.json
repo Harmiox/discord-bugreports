@@ -1,0 +1,43 @@
+{
+  "name": "discord-bugreports",
+  "version": "1.0.0",
+  "description": "Discord bot using Discord.js & YAMDBF to help users report bugs.",
+  "main": "index.js",
+  "scripts": {
+    "test": "discord-bugreports \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Harmiox/discord-bugreports.git"
+  },
+  "author": "Juan Quenga",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Harmiox/discord-bugreports/issues"
+  },
+  "homepage": "https://github.com/Harmiox/discord-bugreports#readme",
+  "dependencies": {
+    "@yamdbf/core": "github:yamdbf/core#indev",
+    "bluebird": "^3.5.5",
+    "dotenv": "^6.1.0",
+    "joi": "^14.3.1",
+    "sequelize": "^5.10.0",
+    "uniqid": "^5.0.3",
+    "validator": "^11.1.0",
+    "winston": "^3.2.1",
+    "ws": "^7.1.0"
+  },
+  "devDependencies": {
+    "@types/bluebird": "^3.5.27",
+    "@types/dotenv": "^6.1.1",
+    "@types/joi": "^14.3.3",
+    "@types/node": "^12.6.2",
+    "@types/uniqid": "^4.1.3",
+    "@types/validator": "^10.11.1",
+    "@types/ws": "^6.0.1",
+    "tslint": "^5.18.0",
+    "tslint-config-prettier": "^1.18.0",
+    "tslint-microsoft-contrib": "^6.2.0",
+    "typescript": "^3.5.3"
+  }
+}
