@@ -118,7 +118,7 @@ export default class extends Command<BugReportsClient> {
 			
 			await this.client.reports.set(report.identifier, report);
 		} catch (err) {
-			this.logger.info('an error has occurred while saving: ', err);
+			this.logger.error('an error has occurred while saving: ', err);
 			message.author.send(`An error has occurred wile saving: ${err.message}`);
 		}
 	}
