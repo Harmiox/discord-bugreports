@@ -20,6 +20,7 @@ export class BugReportsClient extends Client {
 			owner: ['228781414986809344'], // Harmiox,
 			pause: true,
 			readyText: 'Framework Client Ready',
+			statusText: 'DM "report" to report a bug.',
 			token: config.discord.token,
 			unknownCommandError: false
 		});
