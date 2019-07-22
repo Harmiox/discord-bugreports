@@ -26,11 +26,13 @@ export default class extends Command<BugReportsClient> {
 		// Find the correct guild storage
 		const mainGuildId: string = await this.client.storage.get('mainGuildId');
 		const guild: Guild = message.guild || this.client.guilds.get(mainGuildId);
+		this.logger.info(`GuildStorage for ${guild ? guild.id : mainGuildId}`);
 		const guildStorage: GuildStorage = mainGuildId ? this.client.storage.guilds.get(mainGuildId) : guild ? guild.storage : null;
 		if (!guildStorage) { return message.reply('I was unable to find the guild storage. Please make sure the bot has correctly been configured.'); }
 		// Setup
 		const author: User = message.author;
 		const questions: string[] = (await guildStorage.get(GuildStorageKeys.questions)) || [];
+		this.logger.info(`questions for ${questions}`);
 		const reportsChannelId: string = await guildStorage.get(GuildStorageKeys.reportsChannelId);
 		const reportsChannel: TextChannel = (message.client.channels.get(reportsChannelId) as TextChannel);
 		const reportEmbed: MessageEmbed = new MessageEmbed()
