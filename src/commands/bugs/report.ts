@@ -31,7 +31,7 @@ export default class extends Command<BugReportsClient> {
 		if (!guildStorage) { return message.reply('I was unable to find the guild storage. Please make sure the bot has correctly been configured.'); }
 		// Setup
 		const author: User = message.author;
-		const questions: string[] = (await guildStorage.get(GuildStorageKeys.questions)) || [];
+		const questions: string[] =  Object.assign({}, (await guildStorage.get(GuildStorageKeys.questions)) || []);
 		this.logger.info(`questions for ${questions}`);
 		const reportsChannelId: string = await guildStorage.get(GuildStorageKeys.reportsChannelId);
 		const reportsChannel: TextChannel = (message.client.channels.get(reportsChannelId) as TextChannel);
