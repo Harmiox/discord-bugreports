@@ -18,7 +18,7 @@ export default class ReportsClient extends KlasaClient {
       providers: { default: 'mongodb', 'mongodb': {
 				connectionString: `mongodb://${config.mongo.host}:${config.mongo.port}/${config.mongo.database}`
 			} },
-			readyMessage: config.discord.playing,
+			readyMessage: 'ReportsClient is ready.',
 			typing: true
 		});
 
@@ -31,7 +31,7 @@ export default class ReportsClient extends KlasaClient {
 	}
 
 	private async onReady() {
-		this.user.setPresence({ activity: { name: 'DM to report bug!' } });
+		this.user.setPresence({ activity: { name: this.config.discord.playing } });
 		this.logger.info(`${this.guilds.cache.size} guild(s) are in cache.`);
 	}
 
