@@ -43,7 +43,7 @@ export default class ReportsClient extends KlasaClient {
 		this.logger.error('Client Error', error);
 	}
 
-	private onDisconnect(event: CloseEvent): void {
+	private onDisconnect(event: CloseEvent, id: number): void {
 		this.logger.warn(`${this.logger.context} has been disconnected.`);
 		this.disconnects += 1;
     this.logger.warn(`[DICONNECT:${event.code}] ${event.reason}`);
