@@ -44,7 +44,7 @@ export default class ReportsClient extends KlasaClient {
 	}
 
 	private onDisconnect(event: CloseEvent, id: number): void {
-		this.logger.warn(`${this.logger.context} has been disconnected.`);
+		this.logger.warn(`Shard with ID '${id}' has been disconnected.`);
 		this.disconnects += 1;
     this.logger.warn(`[DICONNECT:${event.code}] ${event.reason}`);
     if (event.code === 1000) {
@@ -61,8 +61,8 @@ export default class ReportsClient extends KlasaClient {
     });
   }
 
-  private onReconnecting(): void {
-    this.logger.warn(`${this.logger.context} is reconnecting.`);
+  private onReconnecting(id: number): void {
+    this.logger.warn(`Shard with ID '${id}' is reconnecting.`);
   }
 
 }
