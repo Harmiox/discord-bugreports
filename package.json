@@ -4,6 +4,7 @@
   "description": "Discord bot using Discord.js & YAMDBF to help users report bugs.",
   "main": "index.js",
   "scripts": {
+		"build": "tsc",
     "test": "discord-bugreports \"Error: no test specified\" && exit 1"
   },
   "repository": {
