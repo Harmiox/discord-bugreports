@@ -13,7 +13,8 @@ const configSchema: Joi.ObjectSchema = Joi.object({
 	discord: Joi.object({
 		token: Joi.string().required(),
 		prefix: Joi.string().default('!'),
-		ownerUserID: Joi.string().required()
+		ownerUserID: Joi.string().required(),
+		playing: Joi.string().default('DM to report a bug')
 	}),
 	mongo: Joi.object({
 		host: Joi.string().default('localhost'),

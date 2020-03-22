@@ -3,6 +3,7 @@ discord:
  token: 'DISCORD_TOKEN_HERE'
  prefix: '!'
  ownerUserID: '4328943191124'
+ playing: 'DM to report a bug' 
 mongo: 
  host: 'localhost'
  port: 27017

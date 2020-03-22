@@ -18,7 +18,7 @@ export default class ReportsClient extends KlasaClient {
       providers: { default: 'mongodb', 'mongodb': {
 				connectionString: `mongodb://${config.mongo.host}:${config.mongo.port}/${config.mongo.database}`
 			} },
-			readyMessage: 'ReportsClient Is Ready',
+			readyMessage: config.discord.playing,
 			typing: true
 		});
 

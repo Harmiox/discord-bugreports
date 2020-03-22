@@ -3,6 +3,7 @@ export interface IConfig {
 		token: string;
 		prefix: string;
 		ownerUserID: string;
+		playing: string;
 	};
 	mongo: {
 		host: string;
