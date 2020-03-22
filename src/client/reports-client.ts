@@ -26,8 +26,8 @@ export default class ReportsClient extends KlasaClient {
 		this.on('ready', this.onReady);
 		this.on('warn', this.onWarn);
 		this.on('error', this.onError);
-		this.on('disconnect', this.onDisconnect);
-		this.on('reconnecting', this.onReconnecting);
+		this.on('shardDisconnect', this.onDisconnect);
+		this.on('shardReconnecting', this.onReconnecting);
 	}
 
 	private async onReady() {

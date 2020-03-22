@@ -4,7 +4,7 @@
   "description": "Discord bot using Discord.js & YAMDBF to help users report bugs.",
   "main": "index.js",
   "scripts": {
-		"build": "tsc",
+    "build": "tsc",
     "test": "discord-bugreports \"Error: no test specified\" && exit 1"
   },
   "repository": {
@@ -41,6 +41,6 @@
     "tslint": "^5.18.0",
     "tslint-config-prettier": "^1.18.0",
     "tslint-microsoft-contrib": "^6.2.0",
-    "typescript": "^3.5.3"
+    "typescript": "^3.8.3"
   }
 }
