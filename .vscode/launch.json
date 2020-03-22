@@ -10,7 +10,6 @@
 			"name": "Launch BugReports",
 			"program": "${workspaceFolder}/src/index.ts",
 			"preLaunchTask": "tsc: build - tsconfig.json",
-			"envFile": "${workspaceRoot}/.env",
 			"outFiles": [
 				"${workspaceFolder}/dist/**/*.js"
 			],

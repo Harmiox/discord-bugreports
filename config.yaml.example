@@ -1,0 +1,16 @@
+# I suggest using a YAML parser
+discord:
+ token: 'DISCORD_TOKEN_HERE'
+ prefix: '!'
+ ownerUserID: '4328943191124'
+mongo: 
+ host: 'localhost'
+ port: 27017
+ database: 'discord_reports'
+reports:
+ mainGuildID: '8908421498124'
+ reportsChannelID: '1241231583531'
+ questions: 
+  - "What's the color of the sky?"
+  - "What's the color of the ocean?"
+  - "What's the color of the moon?"

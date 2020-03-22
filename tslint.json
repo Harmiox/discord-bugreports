@@ -15,7 +15,8 @@
 		"no-unnecessary-class": false,
 		"no-backbone-get-set-outside-model": false,
 		"variable-name": [true, "allow-leading-underscore"],
-		"member-ordering": false
+		"member-ordering": false,
+		"object-literal-sort-keys": false
 	},
 	"rulesDirectory": [],
 	"baseUrl": "./src",

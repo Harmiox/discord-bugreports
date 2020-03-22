@@ -1,64 +1,43 @@
-import { Client, SingleProviderStorage } from '@yamdbf/core';
-import { Message } from 'discord.js';
-import { ConfigService } from '../config/config.service';
-import { checkChannelPermissions } from '../middlewares/validate-channel';
+import { KlasaClient, Schema } from 'klasa';
+import { IConfig } from '../config/interfaces/config.interface';
 import { AppLogger } from '../util/app-logger';
 
 /**
- * BugReports Client
+ * Reports Client
  */
 
-export class BugReportsClient extends Client {
-	public config: ConfigService;
-	public reports: SingleProviderStorage = new SingleProviderStorage('reports_storage', this.provider);
-	private logger: AppLogger = new AppLogger('BugReportsClient');
+export default class ReportsClient extends KlasaClient {
+	private logger: AppLogger = new AppLogger('ReportsClient');
 	private disconnects: number = 0;
 
-	constructor(config: ConfigService) {
+	constructor(public config: IConfig) {
 		super({
-			commandsDir: './dist/commands',
-			owner: ['228781414986809344'], // Harmiox,
-			pause: true,
-			readyText: 'Framework Client Ready',
-			statusText: 'DM "report" to report a bug.',
-			token: config.discord.token,
-			unknownCommandError: false
+			ownerID: config.discord.ownerUserID,
+			prefix: config.discord.prefix,
+      production: false,
+      providers: { default: 'mongodb', 'mongodb': {
+				connectionString: `mongodb://${config.mongo.host}:${config.mongo.port}/${config.mongo.database}`
+			} },
+			readyMessage: 'ReportsClient Is Ready',
+			typing: true
 		});
-
-		this.config = config;
-		this.reports.init();
-		this.use((message: Message, args: any[]) => checkChannelPermissions(message, args, this));
 
 		// Bind events to local client methods
 		this.on('ready', this.onReady);
 		this.on('warn', this.onWarn);
-		this.on('pause', this.onPause);
 		this.on('error', this.onError);
 		this.on('disconnect', this.onDisconnect);
 		this.on('reconnecting', this.onReconnecting);
 	}
 
-	public start() {
-		this.logger.info(`${this.logger.context} has been started.`);
-		
-		return super.start();
-	}
-
 	private async onReady() {
-		this.logger.info(`${this.user.username} is ready (${this.guilds.size} guilds)`);
+		this.user.setPresence({ activity: { name: 'DM to report bug!' } });
+		this.logger.info(`${this.guilds.cache.size} guild(s) are in cache.`);
 	}
 
 	private onWarn(info: {}): void {
     this.logger.warn('Discord warning: ', info);
   }
-
-	private async onPause(): Promise<void> {
-		// Set the prefix
-		await this.setDefaultSetting('prefix', '-');
-
-		// Continue
-    this.continue();
-	}
 	
 	private onError(error: Error): void {
 		this.logger.error('Client Error', error);
