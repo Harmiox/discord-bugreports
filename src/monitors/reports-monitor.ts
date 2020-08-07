@@ -8,7 +8,8 @@ import {
 	MessageCollectorOptions, 
 	MessageEmbed, 
 	TextChannel, 
-	User } from 'discord.js';
+	User, 
+	GuildMember} from 'discord.js';
 import { 
 	KlasaMessage, 
 	Monitor, 
@@ -42,8 +43,9 @@ export default class ReportsMonitor extends Monitor {
 		this.reportsClient = client;
 	}
 
-	public async run(message: KlasaMessage): Promise<void> {
+	public async run(message: KlasaMessage): Promise<void | Message> {
 		if (message.channel.type !== 'dm') { return; }
+		if (this.isMuted(message)) { return message.channel.send('You cannot send a bug report while muted.'); }
 		if (this.activeConversations.get(message.author.id)) { return; }
 		this.activeConversations.set(message.author.id, message.author);
 		await message.channel.send('Are you wanting to start a report? *(Respond with **yes** or **y** to start one)*');
@@ -72,6 +74,16 @@ export default class ReportsMonitor extends Monitor {
 	// TODO: To add when adding the ability to edit reports.
 	private async prompt(message: KlasaMessage): Promise<KlasaMessage> {
 		return message;
+	}
+
+	private isMuted(message: KlasaMessage): boolean {
+		const mainGuildId: string = this.reportsClient.config.reports.mainGuildID;
+		const mainGuild: Guild = this.client.guilds.cache.get(mainGuildId);
+		const member: GuildMember = mainGuild.members.cache.get(message.author.id);
+		if (member == null) { return false; }
+		if (member.roles.cache.has('380730321399709706')) { return true; }
+
+		return false;
 	}
 
 	// Start a new report

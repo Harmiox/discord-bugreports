@@ -14,7 +14,7 @@ export default class ReportsClient extends KlasaClient {
 		super({
 			ownerID: config.discord.ownerUserID,
 			prefix: config.discord.prefix,
-      production: false,
+      production: true,
       providers: { default: 'mongodb', 'mongodb': {
 				connectionString: `mongodb://${config.mongo.host}:${config.mongo.port}/${config.mongo.database}`
 			} },
